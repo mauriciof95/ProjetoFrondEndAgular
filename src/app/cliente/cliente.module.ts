@@ -1,14 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ModalComponent } from "../shared/components/modal/modal.component";
 import { ClienteRoutingModule } from "./cliente.router";
 
 import { IndexComponent } from "./pages/index.component";
 
 @NgModule({
   declarations: [
-    IndexComponent,
-    ModalComponent
+    IndexComponent
   ],
   imports: [
     CommonModule,

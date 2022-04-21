@@ -4,11 +4,10 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html'
 })
-export class NavMenuComponent implements OnInit {
+export class NavMenuComponent{
+  public isCollapsed: boolean;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  constructor() {
+    this.isCollapsed = true;
+   }
 }

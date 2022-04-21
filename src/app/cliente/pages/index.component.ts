@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { Cliente } from 'src/app/shared/models/cliente';
 
 @Component({
@@ -9,7 +8,7 @@ import { Cliente } from 'src/app/shared/models/cliente';
 export class IndexComponent {
 
   lista: Cliente[];
-  @ViewChild('modal', {static: false}) modal: ModalComponent;
+
   constructor()
   {
     this.lista = [
@@ -20,9 +19,5 @@ export class IndexComponent {
       { id: 5, nome:"teste5", documento: '12345682' },
       { id: 6, nome:"teste6", documento: '12345683' },
     ]
-  }
-
-  showModal(){
-    this.modal.showModal();
   }
 }
