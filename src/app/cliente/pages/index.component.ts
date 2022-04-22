@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Cliente } from 'src/app/shared/models/cliente';
+import { Cliente } from '../models/Cliente';
 
 @Component({
   selector: 'app-index',

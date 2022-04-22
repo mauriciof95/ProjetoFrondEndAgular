@@ -7,9 +7,14 @@ import { NotFoundComponent } from './navegation/not-found/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
+  { path: 'conta',
+    loadChildren: () => import('./conta/conta.module')
+    .then(m => m.ContaModule)
+  },
   { path: 'clientes',
      loadChildren: () => import('./cliente/cliente.module')
     .then(m => m.ClienteModule)},
+
   { path: '**', component: NotFoundComponent}
 ];
 

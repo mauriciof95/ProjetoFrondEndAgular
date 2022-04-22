@@ -1,0 +1,73 @@
+<div class="container main-container">
+  <h2>Cadastro</h2>
+
+  <form novalidate (ngSubmit)="adicionarConta()" [formGroup]="cadastroForm">
+    <div class="alert alert-danger" *ngIf="errors.length > 0">
+      <h3 is="msgRetorno">Ops!</h3>
+      <ul>
+        <li *ngFor="let error of errors">{{ error }}</li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="col-md-2 control-label">Nome</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="nome" />
+        <span class="text-danger" *ngIf="displayMessage.nome">
+          <p [innerHTML]="displayMessage.nome"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="col-md-2 control-label">Senha</label>
+      <div class="col-md-10">
+        <input class="form-control" type="password" formControlName="senha" />
+        <span class="text-danger" *ngIf="displayMessage.senha">
+          <p [innerHTML]="displayMessage.senha"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="col-md-2 control-label">E-mail</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="email" />
+        <span class="text-danger" *ngIf="displayMessage.email">
+          <p [innerHTML]="displayMessage.email"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="col-md-2 control-label">Perfil</label>
+      <div class="col-md-10">
+        <select class="form-control" formControlName="perfil_id">
+          <option selected>Selecione um perfil...</option>
+          <option value="1">ADMIN</option>
+          <option value="2">SUPORTE</option>
+        </select>
+        <span class="text-danger" *ngIf="displayMessage.perfil_id">
+          <p [innerHTML]="displayMessage.perfil_id"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-10">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="checkAtivo" formControlName="ativo" />
+          <label class="form-check-label" for="checkAtivo"> Ativo </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <button class="btn btn-success" [disabled]="!cadastroForm.valid" type="submit">
+          Cadastrar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
