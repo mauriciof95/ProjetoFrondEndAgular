@@ -1,8 +1,10 @@
 import { HttpErrorResponse, HttpHeaders } from "@angular/common/http"
 import { throwError } from "rxjs";
+import { environment } from "src/environments/environment";
 
 export abstract class BaseServices{
-  protected URL: string = "http://localhost:8900/"
+
+  protected URL: string = environment.ApiUrl;
 
   protected ObterHeaderJson() {
     return {
@@ -13,7 +15,7 @@ export abstract class BaseServices{
   }
 
   protected extractData(response: any){
-    return response.data || {};
+    return response || {};
   }
 
   protected serviceError(response: Response | any){

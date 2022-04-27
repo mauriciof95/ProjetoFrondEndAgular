@@ -14,7 +14,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
 
   @ViewChildren(FormControlName, {read: ElementRef}) formInputElements: ElementRef[];
 
-  errors: any = [];
+  errors: any[] = [];
 
   cadastroForm: FormGroup;
   usuario: Usuario;
@@ -51,7 +51,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
     this.cadastroForm = this.fb.group({
       id: [''],
       nome: ['', [Validators.required]],
-      senha: ['', [Validators.required, CustomValidators.rangeLength([6,15])]],
+      senha: ['', [Validators.required, CustomValidators.rangeLength([2,15])]],
       email: ['', [Validators.required, Validators.email]],
       perfil_id:	['', [Validators.required]],
       ativo: ['']
@@ -80,11 +80,12 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   }
 
   processarSucesso(response: any){
-
+    this.cadastroForm.reset();
+    this.errors = [];
   }
 
   processarFalha(fail: any){
-
+    this.errors = fail.error.errors;
   }
 
 }

@@ -1,0 +1,8 @@
+<ul class="navbar-nav" [ngSwitch]="usuarioLogado()">
+  <li class="nav-item" *ngSwitchCase="true">
+    <a class="nav-link" href="javascript:void(0)">Bem-Vindo</a>
+  </li>
+  <li class="nav-item" *ngSwitchCase="true">
+    <a class="nav-link text-dark" href="javascript:void(0)" (click)="logout()">Sair</a>
+  </li>
+</ul>

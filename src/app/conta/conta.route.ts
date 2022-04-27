@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ContaAppComponent } from './conta.app.component';
 import { LoginComponent } from './login/login.component';
+import { ContaGuard } from './services/conta.guard';
 
 
 const contaRoutes: Routes = [
@@ -10,7 +11,7 @@ const contaRoutes: Routes = [
     path: '', component: ContaAppComponent,
     children: [
       { path: 'cadastro', component: CadastroComponent },
-      { path: 'login', component: LoginComponent}
+      { path: 'login', component: LoginComponent, canActivate: [ContaGuard]}
     ]
   }
 ];
