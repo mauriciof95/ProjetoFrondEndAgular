@@ -1,10 +1,37 @@
-import { HttpErrorResponse, HttpHeaders } from "@angular/common/http"
-import { throwError } from "rxjs";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http"
+import { Observable, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
+import { catchError, map } from 'rxjs/operators'
+import { Injectable } from "@angular/core";
 
-export abstract class BaseServices{
+@Injectable()
+export class BaseServices{
 
   protected URL: string = environment.ApiUrl;
+
+  constructor(private http: HttpClient){ }
+
+  public Get<T>(resource: string) : Observable<T>{
+    let response = this.http
+    .get(this.URL + resource, this.ObterHeaderJson())
+    .pipe(
+      map( this.extractData ),
+      catchError( this.serviceError ));
+
+    return response;
+  }
+
+
+  public Post<T>(resource: string, obj: {}) : Observable<T>{
+    let response = this.http
+    .post(this.URL + resource, obj, this.ObterHeaderJson())
+    .pipe(
+      map( this.extractData ),
+      catchError( this.serviceError ));
+
+    return response;
+  }
+
 
   protected ObterHeaderJson() {
     return {
@@ -14,11 +41,11 @@ export abstract class BaseServices{
     };
   }
 
-  protected extractData(response: any){
+  private extractData(response: any){
     return response || {};
   }
 
-  protected serviceError(response: Response | any){
+  private serviceError(response: Response | any){
     let customError: string[] = [];
 
     if(response instanceof HttpErrorResponse){

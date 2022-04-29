@@ -56,6 +56,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       perfil_id:	['', [Validators.required]],
       ativo: ['']
     });
+
+    this.cadastroForm.patchValue({ativo: true});
   }
 
   ngAfterViewInit(): void {

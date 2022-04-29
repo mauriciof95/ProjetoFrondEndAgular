@@ -8,26 +8,17 @@ import { Usuario } from '../models/Usuario';
 import { TokenVM } from '../models/TokenVM';
 
 @Injectable()
-export class ContaService extends BaseServices{
-  constructor(private http: HttpClient) { super(); }
+export class ContaService extends BaseServices
+{
+  constructor(_http: HttpClient) {
+    super(_http);
+  }
 
   Incluir(usuario: Usuario) : Observable<any>{
-    let response = this.http
-    .post(this.URL + '/Usuario/cadastrar', usuario, this.ObterHeaderJson())
-    .pipe(
-      map( this.extractData ),
-      catchError( this.serviceError ));
-
-    return response;
+    return this.Post('/Usuario/cadastrar', usuario);
   }
 
   Login(usuarioAuth: UsuarioAuth) : Observable<TokenVM>{
-    let response = this.http
-    .post(this.URL + '/Usuario/login', usuarioAuth, this.ObterHeaderJson())
-    .pipe(
-      map( this.extractData ),
-      catchError( this.serviceError ));
-
-    return response;
+    return this.Post<TokenVM>('/Usuario/login', usuarioAuth);
   }
 }
