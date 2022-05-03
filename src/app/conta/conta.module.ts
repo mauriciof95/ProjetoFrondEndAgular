@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
 
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +12,7 @@ import { ContaAppComponent } from './conta.app.component';
 import { ContaService } from './services/Conta.service';
 import { CustomFormsModule } from 'ngx-custom-validators';
 import { ContaGuard } from './services/conta.guard';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -27,8 +27,8 @@ import { ContaGuard } from './services/conta.guard';
     ContaRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    CustomFormsModule
+    CustomFormsModule,
+    NgxSpinnerModule
   ],
   providers:[
     ContaService,
